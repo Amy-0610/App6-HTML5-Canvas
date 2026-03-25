@@ -31,6 +31,19 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
       <meta name="apple-mobile-web-app-capable" content="yes">
       <link rel="stylesheet" href="w3.css">
       <link rel="stylesheet" href="w3-colors-flat.css">
+	   <style>	
+		 #myCanvas {
+			border: 2px solid #000;
+		    display: block;
+	        margin: 10px auto;
+	        background-color: white;
+			}
+        .button-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>   
+			
    </head> 
 
 
@@ -45,14 +58,14 @@ function initCanvas(){
 
 	//Function to draw a colored rectangle
 	window.drawRect = function() {
-		ctx.fillSyyle = "#8a9a5b" //sage green color
-		ctx.fillRect (20, 20, 100, 400);
+		ctx.fillStyle = "#8a9a5b"; //sage green color
+		ctx.fillRect (20, 20, 100, 100);
 	};
 
 	//Function to show user's name
 	window.drawName = function(){
 		ctx.font = "30px Arial";
-		ctx.fillStyle = "red";
+		ctx.fillStyle = "black";
 		ctx.fillText("Amy Nguyen" , 20, 160);
 	};
 
@@ -62,12 +75,13 @@ function initCanvas(){
 		img.src = "https://upload.wikimedia.org/wikipedia/en/5/55/Radioheadthebends.png";
 		img.onload = function(){
 			//Draws image once it is fully loaded
-			cts.drawImage (img, 150, 20, 120, 100);
+			ctx.drawImage (img, 150, 20, 120, 100);
 		};
 	};
+	
 	//Button function: to clear canvas
 		window.clearCanvas = function() {
-			ctx.clearRect(0,0, candvas.width, canvas.height) //removes all pixels in the canvas area
+			ctx.clearRect(0,0, canvas.width, canvas.height) //removes all pixels in the canvas area
 		}
 }
 </script>
@@ -94,7 +108,7 @@ function initCanvas(){
 }
 </style>
 
-<body>
+<body onload= "initCanvas();">
 <div id="header" class="w3-container w3-flat-carrot">
 	<h1>App6---HTML5-Canvas</h1>
 </div>
