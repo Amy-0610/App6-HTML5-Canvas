@@ -7,7 +7,7 @@ THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
  
 Authors in chronological order of contribution:
 Tim Riedel
-Author 2
+Amy Nguyen
  
 Further Information:
 http://cns.utexas.edu/fri
@@ -17,10 +17,10 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-blah, blah, blah,
- 
+This app allows users to interact with a drawing surface by using JavaScript functions to render geometric shapes, text, and external images via buttons. 
+	
 Known Issues:
-blah, blah, blah, blah
+The canvas dimensions are fixed which may cause scaling issues on extremely small or large modile screens. 
 https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
@@ -38,6 +38,38 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 var docMod = document.lastModified; // loads last modified time stamp into docMod variable
 alert("This file last modified " + docMod); // generates alert box with time stamp. If annoying, comment out this entire line.
 console.log("This file last modified " + docMod); // generates message in javaScript console (found in developers tools) with time stamp. 
+
+function initCanvas(){
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+
+	//Function to draw a colored rectangle
+	window.drawRect = function() {
+		ctx.fillSyyle = "#8a9a5b" //sage green color
+		ctx.fillRect (20, 20, 100, 400);
+	};
+
+	//Function to show user's name
+	window.drawName = function(){
+		ctx.font = "30px Arial";
+		ctx.fillStyle = "red";
+		ctx.fillText("Amy Nguyen" , 20, 160);
+	};
+
+	//Function to load and display image of radiohead album
+	window.loadImage = function() {
+		var img = new Image();
+		img.src = "https://upload.wikimedia.org/wikipedia/en/5/55/Radioheadthebends.png";
+		img.onload = function(){
+			//Draws image once it is fully loaded
+			cts.drawImage (img, 150, 20, 120, 100);
+		};
+	};
+	//Button function: to clear canvas
+		window.clearCanvas = function() {
+			ctx.clearRect(0,0, candvas.width, canvas.height) //removes all pixels in the canvas area
+		}
+}
 </script>
 
 
@@ -68,8 +100,16 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 </div>
 	
 <div id="content" class="w3-container">
-	<p>Content goes here.</p>
-		
+	<p>Use buttons below to interact with the Canvas. </p>
+	<canvas id="myCanvas" width="300" height="300"></canvas>
+
+	<div class ="button-container">
+		<button onclick="drawRect();" class="w3-button w3-grey w3-round">Draw Rect</button>
+		<button onclick="drawName();" class="w3-button w3-grey w3-round">Draw Name</button>
+		<button onclick="loadImage();" class="w3-button w3-grey w3-round">Load Image</button>
+		<button onclick="clearCanvas();" class="w3-button w3-grey w3-round">Clear</button>
+	</div>
+
 	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
  	
 	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
